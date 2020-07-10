@@ -18,7 +18,7 @@
         Manage Recipe
       </button>
       <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <a class="dropdown-item" href="#">Add Ingredients</a>
+        <a class="dropdown-item" (click)="onAddToShoppingList()" style="cursor: pointer;">Add Ingredients To List</a>
         <a class="dropdown-item" href="#">Edit Recipe</a>
         <a class="dropdown-item" href="#">Delete Recipe</a>
       </div>
@@ -43,6 +43,11 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    Ingredients
+    <ul class="list-group">
+      <li class="list-group-item"
+          *ngFor="let ingredient of recipe.ingredients">
+        {{ingredient.name}} - {{ingredient.quantity}}
+      </li>
+    </ul>
   </div>
 </div>
