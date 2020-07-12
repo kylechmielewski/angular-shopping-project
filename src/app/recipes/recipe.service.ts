@@ -29,8 +29,12 @@ export class RecipeService {
   constructor(private shoppingListService: ShoppingListService) { }
 
   getRecipes() {
-    //will return a copy of the array so we're not returning original
+    //will return a (not deep) copy of the array so we're not returning original
     return this.recipes.slice();
+  }
+
+  getRecipe(index: number) {
+    return this.recipes[index];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
