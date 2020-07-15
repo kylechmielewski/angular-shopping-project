@@ -1,17 +1,24 @@
-<div class="row">
+<div class="row" style="margin: auto">
   <div class="col-xs-12">
     <img [src]="recipe.imagePath"
          alt="{{recipe.name}}"
          class="img-responsive"
-         style="max-height: 300px"/>
+         style="max-height: 300px" />
   </div>
 </div>
-<div class="row">
+<div class="row" style="margin: auto">
   <div class="col-xs-12">
     <h1>{{recipe.name}}</h1>
   </div>
 </div>
-<div class="row">
+
+<div class="row" style="margin: auto">
+  <div class="col-xs-12">
+    {{recipe.description}}
+  </div>
+</div>
+<hr />
+<div class="row" style="margin: auto">
   <div class="col-xs-12">
     <div class="btn-group" role="group">
       <button class="btn btn-primary dropdown-toggle" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,12 +43,8 @@
     </div>-->
   </div>
 </div>
-<div class="row">
-  <div class="col-xs-12">
-    {{recipe.description}}
-  </div>
-</div>
-<div class="row">
+<br />
+<div class="row" style="margin: auto">
   <div class="col-xs-12">
     <ul class="list-group">
       <li class="list-group-item"
