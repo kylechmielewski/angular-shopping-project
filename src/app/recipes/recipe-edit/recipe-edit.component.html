@@ -11,6 +11,7 @@
                   (click)="onCancel()">Cancel</button>
         </div>
       </div>
+      <br />
       <div class="row" style="margin: auto">
         <div class="col-xs-12">
           <div class="form-group">
@@ -30,16 +31,14 @@
                    id="imagePath"
                    formControlName="imagePath"
                    class="form-control"
-                   #imagePath/>
+                   #imagePath />
           </div>
         </div>
-        <div class="row" style="margin: auto">
-          <div class="col-xs-12">
-            <div class="form-group" >
-              <img [src]="imagePath.value"
-                   class="img-responsive" />
-            </div>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value"
+                class="img-responsive" />
         </div>
       </div>
       <div class="row" style="margin: auto">
@@ -87,5 +86,6 @@
         </div>
       </div>
     </form>
+    <br /><br />
   </div>
 </div>
