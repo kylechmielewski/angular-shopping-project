@@ -36,4 +36,9 @@ export class RecipeDetailComponent implements OnInit {
     //Example route if wanting to purpopsefully use the id to navigate a different way
     //this.router.naviage(['../', this.id, 'edit'], { relativeTo: this.activatedRoute });
   }
+
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
+  }
 }

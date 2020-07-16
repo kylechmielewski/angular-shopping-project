@@ -14,7 +14,6 @@ export class ShoppingListService {
 
   constructor() { }
 
-  ////////////GET
 
   getIngredient(index: number) {
     return this.ingredients[index];
@@ -24,8 +23,6 @@ export class ShoppingListService {
     //will return a (not deep)copy of the array so we're not returning original
     return this.ingredients.slice();
   }
-
-  /////////////ADD
 
   addIngredient(ingredient: Ingredient) {
     this.normalizeAndAddIngredient(ingredient);
@@ -42,22 +39,18 @@ export class ShoppingListService {
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
-  /////////////UDPATE
-
   updateIngredient(index: number, newIngredient: Ingredient) {
     this.ingredients[index] = newIngredient
     this.ingredientsChanged.next(this.ingredients.slice());
   }
-
-  /////////////DELETE
 
   deleteIngredient(index: number) {
     this.ingredients.splice(index, 1);
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
-  ////////////////////
 
+  //Internally make ingredient names TitleCase, and add them correctly
   normalizeAndAddIngredient(ingredient: Ingredient) {
     if (this.ingredients.some(i => i.name === ingredient.name)) {
       const idx = this.ingredients.findIndex(i => i.name === ingredient.name);
