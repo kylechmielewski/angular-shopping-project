@@ -1,5 +1,5 @@
 <div class="row" style="margin: auto">
-  <div class="col-xs-12">
+  <div class="col">
     <form (ngSubmit)="onSubmit(formElement)" #formElement="ngForm">
       <div class="row" style="margin: auto">
         <div class="col-sm-8 form-group">
@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="row" style="margin: auto">
-        <div class="col-xs-12">
+        <div class="col">
           <button class="btn btn-success"
                   type="submit"
                   [disabled]="!formElement.valid"

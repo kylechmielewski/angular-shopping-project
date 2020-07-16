@@ -1,5 +1,5 @@
 <div class="row" style="margin: auto; margin-top: 30px">
-  <div class="col-xs-12">
+  <div class="col">
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
       <div class="row" style="margin: auto">
         <div class="col">
@@ -60,12 +60,12 @@
                style="margin: auto; margin-top: 10px;"
                *ngFor="let ingredientControl of getControls(); let i = index"
                [formGroupName]="i">
-            <div class="col-sm-8">
+            <div class="col-sm-7">
               <input type="text"
                      class="form-control"
                      formControlName="name"/>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
               <input type="number"
                      class="form-control"
                      formControlName="quantity"/>

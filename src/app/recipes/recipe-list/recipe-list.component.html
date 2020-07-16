@@ -1,13 +1,13 @@
 <br />
 <div class="row" style="margin: auto">
-  <div class="col-xs-12">
+  <div class="col">
     <button (click)="onNewRecipe()"
             class="btn btn-success">New Recipe</button>
   </div>
 </div>
 <hr />
 <div class="row" style="margin: auto">
-  <div class="col-xs-12">
+  <div class="col">
     <app-recipe-item *ngFor="let recipeElement of recipes; let i = index"
                      [recipe]="recipeElement"
                      [index]="i">

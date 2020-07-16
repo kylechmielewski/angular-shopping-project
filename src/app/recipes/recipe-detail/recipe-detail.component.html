@@ -1,5 +1,5 @@
 <div class="row" style="margin: auto">
-  <div class="col-xs-12">
+  <div class="col">
     <img [src]="recipe.imagePath"
          alt="{{recipe.name}}"
          class="img-responsive"
@@ -7,19 +7,19 @@
   </div>
 </div>
 <div class="row" style="margin: auto">
-  <div class="col-xs-12">
+  <div class="col">
     <h1>{{recipe.name}}</h1>
   </div>
 </div>
 
 <div class="row" style="margin: auto">
-  <div class="col-xs-12">
+  <div class="col">
     {{recipe.description}}
   </div>
 </div>
 <hr />
 <div class="row" style="margin: auto">
-  <div class="col-xs-12">
+  <div class="col">
     <div class="btn-group" role="group">
       <button class="btn btn-primary dropdown-toggle" id="btnGroupDrop1" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Manage Recipe
@@ -51,7 +51,7 @@
 </div>
 <br />
 <div class="row" style="margin: auto">
-  <div class="col-xs-12">
+  <div class="col">
     <ul class="list-group">
       <li class="list-group-item"
           *ngFor="let ingredient of recipe.ingredients">
