@@ -18,8 +18,12 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" style="cursor: pointer;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" style="cursor: pointer;">Save Data</a>
-            <a class="dropdown-item" style="cursor: pointer;">Fetch Data</a>
+            <a class="dropdown-item"
+               style="cursor: pointer;"
+               (click)="onSaveData()">Save Data</a>
+            <a class="dropdown-item"
+               style="cursor: pointer;"
+               (click)="onFetchData()">Fetch Data</a>
           </div>
         </li>
       </ul>
