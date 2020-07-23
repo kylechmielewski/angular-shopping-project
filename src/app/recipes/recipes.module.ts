@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { RecipesComponent } from './recipes.component';
@@ -10,6 +9,7 @@ import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.compo
 import { RecipeStartComponent } from './recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 import { RecipesRoutesModule } from './recipes-routes.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -22,20 +22,9 @@ import { RecipesRoutesModule } from './recipes-routes.module';
     ],
     imports: [
         RouterModule,
-        //Use CommonModule when you need to use ngIf/ngFor etc
-        //Because BrowserModule can only be used ONCE
-        CommonModule,
+        SharedModule,
         ReactiveFormsModule,
         RecipesRoutesModule
-    ],
-    //Now when we export RecipesModule, all of these will be included
-    exports: [
-        RecipesComponent,
-        RecipeListComponent,
-        RecipeDetailComponent,
-        RecipeItemComponent,
-        RecipeStartComponent,
-        RecipeEditComponent,
     ]
 })
 export class RecipesModule {}
