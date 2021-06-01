@@ -3,15 +3,19 @@
     <app-shopping-edit></app-shopping-edit>
     <hr />
     <div class="list-group">
-      <a class="list-group-item list-group-item-action"
-         style="cursor: pointer"
-         *ngFor="let ingredient of ingredients; let i = index"
-         (click)="onEditItem(i)">
-        {{ingredient.name}} ({{ingredient.quantity}})
+      <a
+        class="list-group-item list-group-item-action"
+        style="cursor: pointer"
+        *ngFor="
+          let ingredient of (ingredients | async).ingredients;
+          let i = index
+        "
+        (click)="onEditItem(i)"
+      >
+        {{ ingredient.name }} ({{ ingredient.quantity }})
       </a>
     </div>
   </div>
 </div>
 
-
-<!--<div class="col-xs-10">-->
+<!-- | async = angular will subscribe to ingredients for us and will resolve it so we can access it -->
