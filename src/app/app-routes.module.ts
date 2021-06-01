@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   imports: [
     CommonModule,
     //Once we are on home page, all other modules will be loaded while user browses page
-    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules, relativeLinkResolution: 'legacy' })
     //RouterModule.forRoot(appRoutes)
   ],
   exports: [RouterModule]
