@@ -6,7 +6,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../store/shopping-list.actions';
-import * as fromShoppingList from '../store/shopping-list.reducer';
+import * as fromApp from '../../store/app.reducer';
 import { setClassMetadata } from '@angular/core/src/r3_symbols';
 
 @Component({
@@ -24,7 +24,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   constructor(
     private titleCasePipe: TitleCasePipe,
     private shoppingListService: ShoppingListService,
-    private store: Store<fromShoppingList.AppState>
+    private store: Store<fromApp.AppState>
   ) {}
 
   ngOnInit(): void {

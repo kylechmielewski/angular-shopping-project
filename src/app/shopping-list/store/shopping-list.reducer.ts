@@ -3,10 +3,6 @@ import { Action } from '@ngrx/store';
 import { Ingredient } from '../../shared/ingredient.model';
 import * as ShoppingListActions from './shopping-list.actions';
 
-export interface AppState {
-  shoppingList: State;
-}
-
 export interface State {
   ingredients: Ingredient[];
   editedIngredient: Ingredient;
@@ -26,12 +22,14 @@ export function shoppingListReducer(
 ) {
   switch (action.type) {
     case ShoppingListActions.ADD_INGREDIENT:
+      //first copy the old state, then overwrite what we want to overwrite.
       return {
         //pulls properties from old state and puts it in new state
         ...state,
         ingredients: [...state.ingredients, action.payload],
       };
     case ShoppingListActions.ADD_INGREDIENTS:
+      //first copy the old state, then overwrite what we want to overwrite.
       return {
         ...state,
         //pull the elements from payload and put it to the new payload
@@ -49,6 +47,7 @@ export function shoppingListReducer(
       //replacing the old element with that index with the copy of the updated ingredient
       updatedIngredients[state.editedIngredientIndex] = updatedIngredient;
 
+      //first copy the old state, then overwrite what we want to overwrite.
       return {
         ...state,
         ingredients: updatedIngredients,
@@ -69,12 +68,14 @@ export function shoppingListReducer(
         editedIngredient: null,
       };
     case ShoppingListActions.START_EDIT:
+      //first copy the old state, then overwrite what we want to overwrite.
       return {
         ...state,
         editedIngredientIndex: action.payload,
         editedIngredient: { ...state.ingredients[action.payload] },
       };
     case ShoppingListActions.STOP_EDIT:
+      //first copy the old state, then overwrite what we want to overwrite.
       return {
         ...state,
         editedIngredient: null,
