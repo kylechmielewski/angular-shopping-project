@@ -3,10 +3,14 @@ import * as AuthActions from './auth.actions';
 
 export interface State {
   user: User;
+  authError: string;
+  loading: boolean;
 }
 
 const initialState = {
   user: null,
+  authError: null,
+  loading: false,
 };
 
 export function authReducer(
@@ -14,7 +18,7 @@ export function authReducer(
   action: AuthActions.AuthActions
 ) {
   switch (action.type) {
-    case AuthActions.LOGIN:
+    case AuthActions.AUTHENTICATE_SUCCESS:
       const user = new User(
         action.payload.email,
         action.payload.userId,
@@ -28,7 +32,28 @@ export function authReducer(
       //first copy the old state, then overwrite what we want to overwrite.
       return {
         ...state,
+        authError: null,
         user: null,
+        loading: false,
+      };
+    case AuthActions.LOGIN_START:
+    case AuthActions.SIGNUP_START:
+      return {
+        ...state,
+        authError: null,
+        loading: true,
+      };
+    case AuthActions.AUTHENTICATE_FAIL:
+      return {
+        ...state,
+        user: null,
+        authError: action.payload,
+        loading: false,
+      };
+    case AuthActions.CLEAR_ERROR:
+      return {
+        ...state,
+        authError: null,
       };
     default:
       return state;
