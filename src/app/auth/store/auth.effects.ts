@@ -36,6 +36,7 @@ const handleAuthentication = (
     userId: userId,
     token: token,
     expirationDate: expirationDate,
+    redirect: true,
   });
 };
 const handleError = (errorResponse: any) => {
@@ -137,8 +138,10 @@ export class AuthEffects {
   authRedirect = this.actions$.pipe(
     ofType(AuthActions.AUTHENTICATE_SUCCESS),
     //tap won't return an observable or an
-    tap(() => {
-      this.router.navigate(['/']);
+    tap((authSuccessAction: AuthActions.AuthenticateSuccess) => {
+      if (authSuccessAction.payload.redirect) {
+        this.router.navigate(['/']);
+      }
     })
   );
 
@@ -176,6 +179,7 @@ export class AuthEffects {
           userId: loadedUser.id,
           token: loadedUser.token,
           expirationDate: new Date(userData._tokenExpirationDate),
+          redirect: false,
         });
 
         //Future date - current date

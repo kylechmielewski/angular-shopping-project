@@ -4,20 +4,27 @@ import { RecipeService } from '../recipes/recipe.service';
 import { Recipe } from '../recipes/recipe.model';
 import { map, tap, take, exhaustMap } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
+import { Store } from '@ngrx/store';
+
+import * as fromApp from '../store/app.reducer';
+import * as RecipesActions from '../recipes/store/recipe.actions';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataStorageService {
-
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
     private recipeService: RecipeService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private store: Store<fromApp.AppState>
+  ) {}
 
   storeRecipes() {
     const recipes = this.recipeService.getRecipes();
-    this.http.put('https://recipe-book-179e7.firebaseio.com/recipes.json', recipes)
-      .subscribe(response => {
+    this.http
+      .put('https://recipe-book-179e7.firebaseio.com/recipes.json', recipes)
+      .subscribe((response) => {
         console.log(response);
       });
   }
@@ -25,17 +32,20 @@ export class DataStorageService {
   fetchRecipes() {
     //Only take 1 value from this observable, then automatically unsubscribe
     //ExhaustMap waits for the first observable to complete, in this case, take(1)
-    return this.http.get<Recipe[]>('https://recipe-book-179e7.firebaseio.com/recipes.json')
+    return this.http
+      .get<Recipe[]>('https://recipe-book-179e7.firebaseio.com/recipes.json')
       .pipe(
-        map(recipes => {
-          return recipes.map(recipe => {
+        map((recipes) => {
+          return recipes.map((recipe) => {
             return {
               ...recipe,
-              ingredients: recipe.ingredients ? recipe.ingredients : [] };
+              ingredients: recipe.ingredients ? recipe.ingredients : [],
+            };
           });
         }),
-        tap(recipes => {
-          this.recipeService.setRecipes(recipes);
+        tap((recipes) => {
+          //this.recipeService.setRecipes(recipes);
+          this.store.dispatch(new RecipesActions.SetRecipes(recipes));
         })
       );
   }
